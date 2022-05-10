@@ -17,12 +17,11 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
   List _isHovering = [false, false, false, false];
   List<Widget> rowElements = [];
 
-  List<String> items = ['Destination', 'Dates', 'Events', 'Experience'];
+  List<String> items = ['Vision', 'Mission', 'Events'];
   List<IconData> icons = [
-    Icons.location_on,
-    Icons.date_range,
+    Icons.visibility_outlined,
+    Icons.emoji_objects_sharp,
     Icons.people,
-    Icons.wb_sunny
   ];
 
   List<Widget> generateRowElements() {
@@ -65,76 +64,149 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      heightFactor: 1,
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: widget.screenSize.height * 0.40,
-          left: ResponsiveWidget.isSmallScreen(context)
-              ? widget.screenSize.width / 12
-              : widget.screenSize.width / 5,
-          right: ResponsiveWidget.isSmallScreen(context)
-              ? widget.screenSize.width / 12
-              : widget.screenSize.width / 5,
-        ),
-        child: ResponsiveWidget.isSmallScreen(context)
-            ? Column(
-                children: [
-                  ...Iterable<int>.generate(items.length).map(
-                    (int pageIndex) => Padding(
-                      padding:
-                          EdgeInsets.only(top: widget.screenSize.height / 80),
-                      child: Card(
-                        color: Theme.of(context).cardColor,
-                        elevation: 4,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              top: widget.screenSize.height / 45,
-                              bottom: widget.screenSize.height / 45,
-                              left: widget.screenSize.width / 20),
-                          child: Row(
-                            children: [
-                              Icon(
-                                icons[pageIndex],
-                                color: Theme.of(context).iconTheme.color,
-                              ),
-                              SizedBox(width: widget.screenSize.width / 20),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                onTap: () {},
-                                child: Text(
-                                  items[pageIndex],
-                                  style: TextStyle(
-                                      color: Theme.of(context)
-                                          .primaryTextTheme
-                                          .button!
-                                          .color,
-                                      fontSize: 16),
+    return ResponsiveWidget.isSmallScreen(context)
+        ? Center(
+            heightFactor: 1,
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: widget.screenSize.height * 0.38,
+                left: ResponsiveWidget.isSmallScreen(context)
+                    ? widget.screenSize.width / 12
+                    : widget.screenSize.width / 5,
+                right: ResponsiveWidget.isSmallScreen(context)
+                    ? widget.screenSize.width / 12
+                    : widget.screenSize.width / 5,
+              ),
+              child: ResponsiveWidget.isSmallScreen(context)
+                  ? Column(
+                      children: [
+                        ...Iterable<int>.generate(items.length).map(
+                          (int pageIndex) => Padding(
+                            padding: EdgeInsets.only(
+                                top: widget.screenSize.height / 80),
+                            child: Card(
+                              color: Theme.of(context).cardColor,
+                              elevation: 4,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: widget.screenSize.height / 45,
+                                    bottom: widget.screenSize.height / 45,
+                                    left: widget.screenSize.width / 20),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      icons[pageIndex],
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                    SizedBox(
+                                        width: widget.screenSize.width / 20),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      onTap: () {},
+                                      child: Text(
+                                        items[pageIndex],
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .primaryTextTheme
+                                                .button!
+                                                .color,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
+                            ),
                           ),
+                        ),
+                      ],
+                    )
+                  : Card(
+                      elevation: 5,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: widget.screenSize.height / 50,
+                          bottom: widget.screenSize.height / 50,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: generateRowElements(),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            : Card(
-                elevation: 5,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: widget.screenSize.height / 50,
-                    bottom: widget.screenSize.height / 50,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: generateRowElements(),
-                  ),
-                ),
+            ),
+          )
+        : Center(
+            heightFactor: 1,
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: widget.screenSize.height * 0.91,
+                left: ResponsiveWidget.isSmallScreen(context)
+                    ? widget.screenSize.width / 12
+                    : widget.screenSize.width / 5,
+                right: ResponsiveWidget.isSmallScreen(context)
+                    ? widget.screenSize.width / 12
+                    : widget.screenSize.width / 5,
               ),
-      ),
-    );
+              child: ResponsiveWidget.isSmallScreen(context)
+                  ? Column(
+                      children: [
+                        ...Iterable<int>.generate(items.length).map(
+                          (int pageIndex) => Padding(
+                            padding: EdgeInsets.only(
+                                top: widget.screenSize.height / 80),
+                            child: Card(
+                              color: Theme.of(context).cardColor,
+                              elevation: 4,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: widget.screenSize.height / 45,
+                                    bottom: widget.screenSize.height / 45,
+                                    left: widget.screenSize.width / 20),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      icons[pageIndex],
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                    SizedBox(
+                                        width: widget.screenSize.width / 20),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      onTap: () {},
+                                      child: Text(
+                                        items[pageIndex],
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .primaryTextTheme
+                                                .button!
+                                                .color,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Card(
+                      elevation: 5,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: widget.screenSize.height / 50,
+                          bottom: widget.screenSize.height / 50,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: generateRowElements(),
+                        ),
+                      ),
+                    ),
+            ));
   }
 }

@@ -12,8 +12,6 @@ import 'package:managerservices/widgets/TopBarContents.dart';
 import 'package:managerservices/widgets/WebScrollbar.dart';
 
 class HomePage extends StatefulWidget {
-  static const String route = '/';
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -42,7 +40,6 @@ class _HomePageState extends State<HomePage> {
     _opacity = _scrollPosition < screenSize.height * 0.40
         ? _scrollPosition / (screenSize.height * 0.40)
         : 1;
-
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       extendBodyBehindAppBar: true,

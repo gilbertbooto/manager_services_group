@@ -20,10 +20,10 @@ class DestinationHeading extends StatelessWidget {
             width: screenSize.width,
             // color: Colors.black,
             child: Text(
-              'Découvrez nos agences dans le monde',
+              'Découvrez ce que nous faisons',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold,
               ),
@@ -37,7 +37,7 @@ class DestinationHeading extends StatelessWidget {
             width: screenSize.width,
             // color: Colors.black,
             child: Text(
-              'Découvrez nos agences dans le monde',
+              'Découvrez ce que nous faisons',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 40,

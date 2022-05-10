@@ -13,7 +13,7 @@ class FeaturedHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: screenSize.height * 0.06,
+        top: screenSize.height * 0.45,
         left: screenSize.width / 15,
         right: screenSize.width / 15,
       ),
@@ -32,12 +32,12 @@ class FeaturedHeading extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-                Text(
-                  'Unique wildlife tours & destinations',
-                  textAlign: TextAlign.end,
-                  style: Theme.of(context).primaryTextTheme.subtitle1,
-                ),
-                SizedBox(height: 10),
+                // Text(
+                //   'Unique wildlife tours & destinations',
+                //   textAlign: TextAlign.end,
+                //   style: Theme.of(context).primaryTextTheme.subtitle1,
+                // ),
+                // SizedBox(height: 10),
               ],
             )
           : Row(
@@ -54,7 +54,7 @@ class FeaturedHeading extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    'Unique wildlife tours & destinations',
+                    '',
                     textAlign: TextAlign.end,
                     style: Theme.of(context).primaryTextTheme.subtitle1,
                   ),

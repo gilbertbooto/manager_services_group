@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:managerservices/widgets/TopBarContents.dart';
 
 class AppView extends StatefulWidget {
-  final Widget child;
+  Widget child;
+  double _opacity = 0;
 
-  const AppView({required this.child});
+  AppView(this._opacity, {required this.child});
 
   @override
   _AppViewState createState() => _AppViewState();
@@ -13,10 +15,12 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       body: Column(
-        children: [Expanded(child: widget.child)],
-        // children: [NavigationBar(), Expanded(child: widget.child)],
+        children: [
+          TopBarContents(widget._opacity),
+          Expanded(child: widget.child)
+        ],
       ),
     );
   }

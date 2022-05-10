@@ -1,6 +1,8 @@
 // ignore_for_file: unused_field
 
 import 'package:flutter/material.dart';
+import 'package:managerservices/utils/routes.dart';
+import 'package:managerservices/widgets/NavigationItem.dart';
 
 class TopBarContents extends StatefulWidget {
   final double opacity;
@@ -25,6 +27,8 @@ class _TopBarContentsState extends State<TopBarContents> {
     false
   ];
 
+  int index = 0;
+
   bool _isProcessing = false;
 
   @override
@@ -38,13 +42,14 @@ class _TopBarContentsState extends State<TopBarContents> {
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 height: 60,
                 width: 60,
                 child: Image.asset(
-                  'assets/img_21.jpg',
+                  'assets/kf.png',
                   scale: 1,
                 ),
               ),
@@ -52,9 +57,9 @@ class _TopBarContentsState extends State<TopBarContents> {
                 width: 5,
               ),
               Text(
-                'Manager Services',
+                'Manager services',
                 style: TextStyle(
-                  color: Colors.blueGrey[100],
+                  color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.w400,
@@ -63,7 +68,7 @@ class _TopBarContentsState extends State<TopBarContents> {
               ),
               Expanded(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SizedBox(width: screenSize.width / 10),
                     // InkWell(
@@ -101,51 +106,23 @@ class _TopBarContentsState extends State<TopBarContents> {
                     //     ],
                     //   ),
                     // ),
-                    SizedBox(width: screenSize.width / 20),
-                    InkWell(
-                      onHover: (value) {
-                        setState(() {
-                          value
-                              ? _isHovering[1] = true
-                              : _isHovering[1] = false;
-                        });
-                      },
-                      onTap: () {
-                        // Navigator.of(context).pushNamed(NewsPages.route);
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Actualités',
-                            style: TextStyle(
-                              color: _isHovering[1]
-                                  ? Colors.blue[200]
-                                  : Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Visibility(
-                            maintainAnimation: true,
-                            maintainState: true,
-                            maintainSize: true,
-                            visible: _isHovering[1],
-                            child: Container(
-                              height: 2,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                          ),
+                    // SizedBox(width: screenSize.width / 20),
 
-                          // ElevatedButton(
-                          //   onPressed: (){
-                          //     html.window.open('https://www.fluttercampus.com',"_blank");
-                          //   },
-                          //   child: Text("Open Flutter Campus"),
-                          // ),
-                        ],
-                      ),
+                    NavigationItem(
+                      selected: index == 0,
+                      title: 'Actualités',
+                      routeName: routeHome,
+                      onHighlight: onHighlight,
                     ),
+
+                    // onHover: (value) {
+                    //   setState(() {
+                    //     value
+                    //         ? _isHovering[1] = true
+                    //         : _isHovering[1] = false;
+                    //   });
+                    // },
+
                     SizedBox(width: screenSize.width / 20),
                     InkWell(
                       onHover: (value) {
@@ -156,11 +133,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                         });
                       },
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => DestinationCarousel()),
-                        // );
+                        navKey.currentState?.pushNamed(routeAbout);
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -173,6 +146,12 @@ class _TopBarContentsState extends State<TopBarContents> {
                                   : Colors.white,
                             ),
                           ),
+                          // NavigationItem(
+                          //   selected: index == 1,
+                          //   title: 'about',
+                          //   routeName: routeAbout,
+                          //   onHighlight: onHighlight,
+                          // ),
                           SizedBox(height: 5),
                           Visibility(
                             maintainAnimation: true,
@@ -408,5 +387,25 @@ class _TopBarContentsState extends State<TopBarContents> {
         ),
       ),
     );
+  }
+
+  void onHighlight(String route) {
+    switch (route) {
+      case routeHome:
+        changeHighlight(0);
+        break;
+      case routeContacts:
+        changeHighlight(1);
+        break;
+      case routeAbout:
+        changeHighlight(2);
+        break;
+    }
+  }
+
+  void changeHighlight(int newIndex) {
+    setState(() {
+      index = newIndex;
+    });
   }
 }

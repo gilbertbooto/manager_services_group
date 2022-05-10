@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.managerservices.managerservices">
    <application
-        android:label="managerservices"
+        android:label="Manager Services"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
